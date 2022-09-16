@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Calc02</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="display">
+            <input id="screen" type="text" placeholder="0">
+        </div>
+        <div class="btns">
+            <button class="btn">(</button>
+            <button class="btn">)</button>
+            <button onclick="fact()" class="btn">X!</button>
+            <button onclick="power2()" class="btn">x²</button>
+            <button onclick="raiz2()" class="btn">√</button>
+            <button class="btn">n√</button>
+            <!-- row 02 -->
+            <button onclick="sin()" class="btn">sin</button>
+            <button onclick="cos()" class="btn">cos</button>
+            <button onclick="tan()" class="btn">tg</button>
+            <button onclick="power3()" class="btn">x³</button>
+            <button onclick="raiz3()" class="btn">³√</button>
+            <button class="btn">xⁿ</button>
+            <!-- row 03 -->
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn">/</button>
+            <button class="btn">%</button>
+            <button class="btn">ln</button>
+            <!-- row 04 -->
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn">*</button>
+            <button onclick="log()" class="btn">log</button>
+            <button onclick="e()" class="btn">e</button>
+            <!-- row 05 -->
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn">-</button>
+            <button id="AC" onclick="AC()" class="btn">AC</button>
+            <button id="CE" onclick="CE()" class="btn">CE</button>
+            <!-- row 06 -->
+            <button class="btn">.</button>
+            <button class="btn">0</button>
+            <button onclick="pi()" class="btn">π</button>
+            <button class="btn">+</button>
+            <button id="eval" onclick="screen.value=eval(screen.value)" class="btn equal">=</button>
+        </div>
+    </div>
+    <script src="script.js">  </script>
+</body>
+<script> 
+    var screen=document.querySelector('#screen');
+    var btn=document.querySelectorAll('.btn');
+
+    for(item of btn)
+    {
+        item.addEventListener('click',(e)=> {
+            btntext=e.target.innerText;
+            if(btntext=="=" || btntext=="sin" || btntext=="cos" || btntext=="tg") {btntext=''}
+            if(btntext=="x²" || btntext=="x³" || btntext=="√" || btntext=="³√") {btntext=''}
+            if(btntext=="e" || btntext=="π" || btntext=="log" || btntext=="X!") {btntext=''}
+            if(btntext=="AC" || btntext=="CE" || btntext=="log" || btntext=="X!") {btntext=''}
+            if(btntext=="xⁿ" || btntext=="CE" || btntext=="log" || btntext=="X!") {btntext=''}
+            screen.value+=btntext;
+        });
+    }
+    function sin(){
+        screen.value=Math.sin(screen.value);
+    }
+
+    function cos(){
+        screen.value=Math.cos(screen.value);
+    }
+
+    function tan(){
+        screen.value=Math.tan(screen.value);
+    }
+
+    function power2(){
+        screen.value=Math.pow(screen.value,2);
+    }
+
+    function power3(){
+        screen.value=Math.pow(screen.value,3);
+    }
+
+    function raiz2(){
+        screen.value=Math.sqrt(screen.value,2);
+    }
+
+    function raiz3(){
+        screen.value=Math.pow(screen.value,1/3);
+    }
+
+    function log(){
+        screen.value=Math.log(screen.value);
+    }
+
+    function pi(){
+        screen.value=3.14159265359;
+    }
+
+    function e(){
+        screen.value=2.71828182846;
+    }
+
+    function fact(){
+        var i, num, f;
+        f=1;
+        num = screen.value;
+        for(i=1; i<=num; i++){
+            f=f*i;
+        }
+        i=i-1;
+        screen.value = f;
+    }
+
+    function CE() {
+        /*screen.value=screen.value.substr(0,screen.value.lenght-1);*/
+        screen.value = screen.value.toString().slice(0,-1)
+    }
+
+    function AC() {
+        screen.value='';
+    }
+</script>
+</html>
