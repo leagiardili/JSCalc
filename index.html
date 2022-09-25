@@ -52,7 +52,7 @@
             <button class="btn">0</button>
             <button onclick="pi()" class="btn">π</button>
             <button class="btn">+</button>
-            <button id="eval" onclick="screen.value=eval(screen.value)" class="btn equal">=</button>
+            <button id="eval" onclick="calcular()" class="btn equal">=</button>
         </div>
     </div>
     <script src="script.js">  </script>
@@ -73,7 +73,8 @@
             if(btntext=="ln") {btntext='Math.log('}
             if(btntext=="xⁿ") {btntext='**'}
             if(btntext=="log") {btntext='Math.log10('}
-
+            if(btntext=="n√") {btntext='√'}
+            
             screen.value+=btntext;
         });
     }
@@ -135,6 +136,26 @@
 
     function AC() {
         screen.value='';
+    }
+
+    function calcular() {
+        /* debo detectar si es n√ */
+        const evalString = screen.value;
+        const esRaiz = evalString.indexOf('√');
+        //console.log(screen.value)
+        //console.log(esRaiz)
+        //console.log(evalString.toString().length)
+        if (esRaiz!=-1) {
+            //browserType.length
+            nRaiz = evalString.slice(0,esRaiz);
+            nOperando = evalString.slice(esRaiz+1,(evalString.length)-esRaiz+1)
+            //console.log(nRaiz)
+            //console.log(nOperando)
+            screen.value=Math.pow(nOperando,1/nRaiz);
+        }
+        else {
+            screen.value=eval(screen.value)
+        }
     }
 </script>
 </html>
