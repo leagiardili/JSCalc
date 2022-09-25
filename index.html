@@ -38,7 +38,7 @@
             <button class="btn">5</button>
             <button class="btn">6</button>
             <button class="btn">*</button>
-            <button onclick="log()" class="btn">log</button>
+            <button class="btn">log</button>
             <button onclick="e()" class="btn">e</button>
             <!-- row 05 -->
             <button class="btn">7</button>
@@ -67,9 +67,13 @@
             btntext=e.target.innerText;
             if(btntext=="=" || btntext=="sin" || btntext=="cos" || btntext=="tg") {btntext=''}
             if(btntext=="x²" || btntext=="x³" || btntext=="√" || btntext=="³√") {btntext=''}
-            if(btntext=="e" || btntext=="π" || btntext=="log" || btntext=="X!") {btntext=''}
-            if(btntext=="AC" || btntext=="CE" || btntext=="log" || btntext=="X!") {btntext=''}
-            if(btntext=="xⁿ" || btntext=="CE" || btntext=="log" || btntext=="X!") {btntext=''}
+            if(btntext=="e" || btntext=="π" || btntext=="X!") {btntext=''}
+            if(btntext=="AC" || btntext=="CE" || btntext=="X!") {btntext=''}
+            if(btntext=="CE") {btntext=''}
+            if(btntext=="ln") {btntext='Math.log('}
+            if(btntext=="xⁿ") {btntext='**'}
+            if(btntext=="log") {btntext='Math.log10('}
+
             screen.value+=btntext;
         });
     }
