@@ -60,7 +60,7 @@
 <script> 
     var screen=document.querySelector('#screen');
     var btn=document.querySelectorAll('.btn');
-
+    let haveDot = false;
     for(item of btn)
     {
         item.addEventListener('click',(e)=> {
@@ -74,6 +74,7 @@
             if(btntext=="xⁿ") {btntext='**'}
             if(btntext=="log") {btntext='Math.log10('}
             if(btntext=="n√") {btntext='√'}
+          //  if(btntext=="." && screen.value.toString().includes('.') && screen.value.toString().length>=1) {btntext=''}
             
             screen.value+=btntext;
         });
@@ -156,6 +157,18 @@
         else {
             screen.value=eval(screen.value)
         }
+    }
+    function dot(){
+        const evalString = screen.value;
+        result = screen.value.toString().slice(0,-1).includes('.')
+        if(result==true) {
+            haveDot=true;
+            screen.value = screen.value.toString().slice(0,-1);
+        }
+        else {
+            return;
+        }
+
     }
 </script>
 </html>
